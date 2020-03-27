@@ -10,7 +10,9 @@
   "author": "Luis Caraballo <luisred61@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nanoid": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
