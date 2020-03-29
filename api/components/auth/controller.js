@@ -1,12 +1,13 @@
 const bcrypt = require('bcrypt')
 const TABLE = 'auth';
 const auth = require('../../../auth')
+const error = require('../../../utils/error');
 
 
 module.exports = function (injectedStore) {
     let store = injectedStore
     if (!store) {
-        store = require('../../../store/dummy')
+        store = require('../../../store/msql')
     }
 
     async function login(username, password) {
@@ -16,9 +17,9 @@ module.exports = function (injectedStore) {
             .then(match => {
                 if (match) {
                     //generar token
-                    return auth.sign(data)
+                    return auth.sign({...data})
                 } else {
-                    throw new Error('Informacion invalida')
+                    throw error('Informacion invalida')
                 }
             });
     }
